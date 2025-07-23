@@ -22,15 +22,24 @@ type Props = {
 
 function AddBookmark({ movieDetails }: Props) {
   const [hasLikes, setHasLikes] = useState(false);
-  const { data: session }: any = useSession();
+  // Temporarily disable session and Firebase
+  // const { data: session }: any = useSession();
   const [likes, setLikes] = useState<any[]>([]);
+  const session = {user: {uid: '123'}}; //mock session object to not break the app
 
   useEffect(
     () =>
-      onSnapshot(
-        collection(firestore, "netflixUsers", session?.user?.uid, "likeMovie"),
-        (snapshot) => setLikes(snapshot.docs)
-      ),
+     {
+      // Temporarily disable Firebase data fetching
+      /*
+      if (session?.user?.uid) {
+        return onSnapshot(
+          collection(firestore, "netflixUsers", session?.user?.uid, "likeMovie"),
+          (snapshot) => setLikes(snapshot.docs)
+        );
+      }
+      */
+     } ,
     [firestore, session?.user?.uid]
   );
 
@@ -44,30 +53,30 @@ function AddBookmark({ movieDetails }: Props) {
   );
 
   const likeMovie = async () => {
-    try {
-      if (hasLikes) {
-        await deleteDoc(
-          doc(
-            firestore,
-            "netflixUsers",
-            session?.user?.uid,
-            "likeMovie",
-            movieDetails?.id.toString()
-          )
-        );
-      } else {
-        const userRef = doc(
+    // Temporarily disabled Firebase functionality
+    console.log('Add to list functionality temporarily disabled');
+    /*
+    if (hasLikes) {
+      deleteDoc(
+        doc(
           firestore,
           "netflixUsers",
           session?.user?.uid,
           "likeMovie",
           movieDetails?.id.toString()
-        );
-        setDoc(userRef, JSON.parse(JSON.stringify(movieDetails)));
-      }
-    } catch (error) {
-      console.log(error);
+        )
+      );
+    } else {
+      const userRef = doc(
+        firestore,
+        "netflixUsers",
+        session?.user?.uid,
+        "likeMovie",
+        movieDetails?.id.toString()
+      );
+      setDoc(userRef, JSON.parse(JSON.stringify(movieDetails)));
     }
+    */
   };
 
   return (

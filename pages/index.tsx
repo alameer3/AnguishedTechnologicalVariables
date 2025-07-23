@@ -16,7 +16,6 @@ type Props = {
   horrorMovies: Movie[];
   romanceMovies: Movie[];
   documentaries: Movie[];
-  session: any;
 };
 
 export default function Home({
@@ -28,8 +27,8 @@ export default function Home({
   horrorMovies,
   romanceMovies,
   documentaries,
-  session,
 }: Props) {
+  const session = null;
   if (!session) return <SignIn />;
 
   return (
@@ -65,7 +64,7 @@ export default function Home({
 export const getServerSideProps = async (context: any) => {
   try {
     const session = await getSession(context);
-    
+
     const [
       netflixOriginals,
       trendingNow,
@@ -96,7 +95,6 @@ export const getServerSideProps = async (context: any) => {
         horrorMovies: horrorMovies?.results || [],
         romanceMovies: romanceMovies?.results || [],
         documentaries: documentaries?.results || [],
-        session: session || null,
       },
     };
   } catch (error) {
@@ -111,7 +109,6 @@ export const getServerSideProps = async (context: any) => {
         horrorMovies: [],
         romanceMovies: [],
         documentaries: [],
-        session: null,
       },
     };
   }

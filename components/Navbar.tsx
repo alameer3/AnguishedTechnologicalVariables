@@ -14,24 +14,8 @@ type Props = {
 
 function Navbar({ isSearch, setSearchTerm, searchThrem }: Props) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { data: session } = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  // Temporarily disable session check
+  // const { data: session } = useSession();
 
   return (
     <header
@@ -98,13 +82,11 @@ function Navbar({ isSearch, setSearchTerm, searchThrem }: Props) {
         )}
         <AiFillBell className="h-6 w-6 cursor-pointer" />
         <RiNetflixFill className="h-6 w-6 cursor-pointer text-red-800" />
-        <div onClick={() => signOut()} className="cursor-pointer">
-          <img
-            src={session?.user?.image!}
-            alt={session?.user?.name!}
-            className="cursor-pointer w-8 rounded-sm"
-          />
-        </div>
+        <img
+          src="https://rb.gy/g1pwyx"
+          alt=""
+          className="cursor-pointer rounded"
+        />
       </div>
     </header>
   );
