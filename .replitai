@@ -1,118 +1,92 @@
 
-# Netflix Clone - مشروع استنساخ نتفليكس
+# 🎬 Netflix Clone - AI Agent Project Context
 
-## السياق: هذا المشروع تم تطويره بواسطة AI Agent
-هذا مشروع Netflix Clone تم إنشاؤه وتطويره بالكامل باستخدام Replit AI Agent. المشروع يحاكي تطبيق Netflix الأصلي مع جميع الميزات الأساسية والتفاعلية.
+## PROJECT OVERVIEW
+This is a complete Netflix Clone application built with Next.js, TypeScript, and Firebase. The AI Agent originally created this project and should understand every aspect of its architecture, features, and functionality.
 
-## وصف المشروع
-مشروع Netflix Clone متكامل مبني بـ Next.js 13 و TypeScript مع Firebase وGoogle Authentication. يوفر تجربة مشاهدة شاملة مع إمكانيات البحث والمفضلة والتفاصيل الكاملة للأفلام والمسلسلات.
-
-## التقنيات والحزم المستخدمة
+## 🛠 TECH STACK
 ```json
 {
-  "frontend": ["Next.js 13.1.1", "React 18.2.0", "TypeScript 4.9.4"],
-  "styling": ["Tailwind CSS 3.2.4", "Framer Motion 8.0.2", "Tailwind Scrollbar"],
-  "authentication": ["NextAuth.js 4.18.7", "Google OAuth"],
-  "database": ["Firebase 9.15.0", "Firestore"],
-  "apis": ["TMDB API", "React Player 2.11.0"],
-  "icons": ["React Icons 4.7.1"],
-  "tools": ["PostCSS", "Autoprefixer"]
+  "framework": "Next.js 13.1.1",
+  "language": "TypeScript 4.9.4", 
+  "styling": "Tailwind CSS 3.2.4",
+  "animation": "Framer Motion 8.0.2",
+  "authentication": "NextAuth.js 4.18.7",
+  "database": "Firebase 9.15.0",
+  "api": "TMDB API",
+  "icons": "React Icons 4.7.1",
+  "video": "React Player 2.11.0"
 }
 ```
 
-## هيكل الملفات والمجلدات
-```
-├── pages/
-│   ├── index.tsx           # الصفحة الرئيسية - عرض الأفلام
-│   ├── tv.tsx             # صفحة المسلسلات التلفزيونية
-│   ├── about.tsx          # صفحة حول المشروع
-│   ├── favourite.tsx      # صفحة المفضلة للمستخدم
-│   ├── people.tsx         # صفحة المشاهير والممثلين
-│   ├── details/[id].tsx   # صفحة تفاصيل الفيلم/المسلسل
-│   ├── cast/[id].tsx      # صفحة تفاصيل الممثل
-│   ├── season/[id].tsx    # صفحة تفاصيل الموسم
-│   └── api/
-│       ├── auth/[...nextauth].ts  # NextAuth API
-│       └── hello.ts       # API تجريبي
+## 📁 PROJECT STRUCTURE
 
-├── components/
-│   ├── MainPage.tsx       # المكون الرئيسي للصفحة الأولى
-│   ├── Navbar.tsx         # شريط التنقل مع البحث
-│   ├── SignIn.tsx         # صفحة تسجيل الدخول
-│   ├── HomeBanner.tsx     # البانر الرئيسي المتحرك
-│   ├── Row.tsx           # صفوف الأفلام والمسلسلات
-│   ├── DetailsFeed.tsx    # عرض تفاصيل المحتوى
-│   ├── Trailer.tsx        # عرض التريلرات
-│   ├── BilledCast.tsx     # عرض طاقم التمثيل
-│   ├── Search.tsx         # مكون البحث المتقدم
-│   ├── AddBookmark.tsx    # إضافة للمفضلة
-│   └── [30+ مكون إضافي]
+### Core Pages (pages/)
+- `index.tsx` - Home page with movies grid
+- `tv.tsx` - TV shows and series page  
+- `about.tsx` - About/info page
+- `favourite.tsx` - User's favorite movies/shows
+- `people.tsx` - Actors and celebrities page
+- `details/[id].tsx` - Movie/TV show details page
+- `cast/[id].tsx` - Actor/person details page
+- `season/[id].tsx` - TV season details page
 
-├── components/SeasonPage/
-│   ├── SeasonDetails.tsx  # تفاصيل الموسم
-│   ├── Episodes.tsx       # عرض الحلقات
-│   ├── SeasonFeed.tsx     # تغذية الموسم
-│   └── SeasonTrailer.tsx  # تريلر الموسم
+### API Routes (pages/api/)
+- `auth/[...nextauth].ts` - NextAuth authentication
+- `hello.ts` - Test API endpoint
 
-├── components/person/
-│   ├── PersonBanner.tsx   # بانر الشخص
-│   ├── PersonFeed.tsx     # معلومات الشخص
-│   ├── KnownFor.tsx       # الأعمال المعروفة
-│   └── PeoplePopular.tsx  # الأشخاص الشائعون
+### Components (components/)
 
-├── components/skeleton/
-│   ├── BannerSkeleton.tsx # هيكل تحميل البانر
-│   ├── ImageSkelten.tsx   # هيكل تحميل الصور
-│   └── TrailerSkeleton.tsx # هيكل تحميل التريلر
+#### Main Components
+- `MainPage.tsx` - Home page layout and content
+- `Navbar.tsx` - Navigation bar with search
+- `SignIn.tsx` - Authentication page
+- `HomeBanner.tsx` - Hero banner with featured content
+- `Row.tsx` - Horizontal scrolling movie rows
+- `DetailsFeed.tsx` - Movie/show details display
+- `Trailer.tsx` - Video trailer player
+- `BilledCast.tsx` - Cast and crew display
+- `Search.tsx` - Search functionality
+- `AddBookmark.tsx` - Add to favorites feature
 
-├── utils/
-│   ├── requests.ts        # طلبات TMDB API للأفلام
-│   ├── personRequest.ts   # طلبات TMDB API للأشخاص
-│   ├── tvSeasonRequest.ts # طلبات TMDB API للمواسم
-│   └── baseUrl.tsx        # قاعدة بيانات الصور
+#### Season Pages (components/SeasonPage/)
+- `SeasonDetails.tsx` - TV season information
+- `Episodes.tsx` - Episode list and details
+- `SeasonFeed.tsx` - Season content feed
+- `SeasonTrailer.tsx` - Season trailers
 
-├── firebase/
-│   └── firebase.ts        # إعداد Firebase
+#### Person Pages (components/person/)
+- `PersonBanner.tsx` - Actor/person hero section
+- `PersonFeed.tsx` - Person information feed
+- `KnownFor.tsx` - Known works display
+- `PeoplePopular.tsx` - Popular people grid
+- `PersonMaping.tsx` - Person data mapping
+- `SingleCast.tsx` - Individual cast member
 
-└── styles/
-    └── globals.css        # التنسيقات العامة
-```
+#### Skeleton Loaders (components/skeleton/)
+- `BannerSkeleton.tsx` - Loading skeleton for banners
+- `ImageSkelten.tsx` - Loading skeleton for images
+- `TrailerSkeleton.tsx` - Loading skeleton for trailers
+- `BannerDetailsSkeleton.tsx` - Details banner skeleton
+- `BilledCastSceleton.tsx` - Cast section skeleton
 
-## الميزات الوظيفية المطبقة
+#### Additional Components
+- `Footer.tsx` - Site footer
+- `AboutFeed.tsx` - About page content
+- `FavoriteFeed.tsx` - Favorites page layout
+- `EmptyMovie.tsx` - Empty state component
+- `Questions.tsx` - FAQ component
 
-### 1. نظام المصادقة الآمن
-- **Google OAuth** باستخدام NextAuth.js v4
-- **حماية الصفحات** - يتطلب تسجيل دخول
-- **إدارة الجلسات** الآمنة
-- **صفحة تسجيل دخول** مخصصة بتصميم Netflix
+### Utils (utils/)
+- `requests.ts` - TMDB API requests for movies
+- `personRequest.ts` - TMDB API requests for people
+- `tvSeasonRequest.ts` - TMDB API requests for TV seasons
+- `baseUrl.tsx` - Image base URL configuration
 
-### 2. عرض المحتوى التفاعلي
-- **البانر الرئيسي** مع تشغيل تلقائي للتريلرات
-- **صفوف متعددة** للأفلام (شائع، جديد، أكشن، كوميديا، رعب، إلخ)
-- **المسلسلات التلفزيونية** مع المواسم والحلقات
-- **تشغيل التريلرات** في نوافذ منبثقة
-- **التمرير الأفقي** السلس للأفلام
+### Firebase (firebase/)
+- `firebase.ts` - Firebase configuration and setup
 
-### 3. صفحات التفاصيل الشاملة
-- **معلومات كاملة** للأفلام والمسلسلات
-- **طاقم التمثيل** مع الصور والأدوار
-- **التقييمات والتواريخ** من TMDB
-- **الأنواع والمدة** والمعلومات الإضافية
-- **الأفلام المشابهة** والتوصيات
-
-### 4. نظام البحث المتقدم
-- **بحث فوري** في الأفلام والمسلسلات
-- **نتائج ديناميكية** أثناء الكتابة
-- **تصفح حسب الفئات** والأنواع
-- **صفحة المشاهير** مع تفاصيل شخصية
-
-### 5. نظام المفضلة والإشارات المرجعية
-- **إضافة للمفضلة** مع Firebase Firestore
-- **صفحة المفضلة الشخصية** لكل مستخدم
-- **حفظ الإشارات المرجعية** بشكل دائم
-- **إدارة المحتوى المحفوظ**
-
-## متغيرات البيئة المطلوبة (.env.local)
+## 🔑 ENVIRONMENT VARIABLES
 ```env
 # TMDB API
 NEXT_PUBLIC_API_KEY=your_tmdb_api_key
@@ -122,11 +96,11 @@ GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 
 # NextAuth
-NEXT_PUBLIC_SECRET=your_nextauth_secret
+NEXT_PUBLIC_SECRET=your_secret
 NEXT_PUBLIC_AUTH_URL=http://localhost:3000
 NEXTAUTH_URL=http://localhost:3000
 
-# Firebase Configuration
+# Firebase
 NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
@@ -136,79 +110,60 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
 ```
 
-## أوامر NPM والتشغيل
-```bash
-# تثبيت التبعيات
-npm install
+## 🚀 FEATURES IMPLEMENTED
 
-# تشغيل الخادم المحلي (المنفذ 3000)
-npm run dev
+### Authentication System
+- Google OAuth with NextAuth.js
+- Protected routes and pages
+- Session management
+- Secure login/logout flow
 
-# بناء للإنتاج
-npm run build
+### Content Display
+- TMDB API integration for movies and TV shows
+- Dynamic hero banners with autoplay trailers
+- Horizontal scrolling movie rows by genre
+- Responsive grid layouts
+- High-quality poster images
 
-# تشغيل النسخة المبنية
-npm run start
+### Movie/TV Details
+- Comprehensive details pages
+- Cast and crew information
+- Trailers and video content
+- Similar content recommendations
+- Release dates and ratings
 
-# فحص الكود
-npm run lint
-```
+### Search & Discovery
+- Real-time search functionality
+- Browse by categories and genres
+- Popular people and celebrities
+- Advanced filtering options
 
-## APIs الخارجية المستخدمة
-- **TMDB API**: أفلام، مسلسلات، ممثلين، تريلرات، صور
-- **Firebase Firestore**: حفظ المفضلة وبيانات المستخدمين
-- **Google OAuth**: المصادقة والتسجيل
-- **NextAuth**: إدارة الجلسات والأمان
+### Favorites System
+- Add/remove from favorites
+- Firebase Firestore integration
+- Personal favorites page
+- Persistent bookmarks
 
-## التوجيه والصفحات (Next.js Routing)
-```
-/ → الصفحة الرئيسية (الأفلام)
-/tv → المسلسلات التلفزيونية
-/about → معلومات عن المشروع
-/favourite → المفضلة الشخصية
-/people → المشاهير والممثلين
-/details/[id] → تفاصيل الفيلم/المسلسل
-/cast/[id] → تفاصيل الممثل
-/season/[id] → تفاصيل الموسم
-/api/auth/* → NextAuth endpoints
-```
+### Responsive Design
+- Mobile-first responsive design
+- Tailwind CSS styling
+- Smooth animations with Framer Motion
+- Netflix-like UI/UX
+- Loading states and skeletons
 
-## التصميم والواجهة (UI/UX)
-- **تصميم متجاوب** يعمل على جميع الأحجام
-- **ألوان Netflix الأصلية** - أسود، أحمر، رمادي
-- **حركات Framer Motion** سلسة ومتناسقة
-- **تأثيرات Hover** وتفاعل المستخدم
-- **Skeleton Screens** أثناء التحميل
-- **Tailwind CSS** للتنسيق السريع
-- **Icons React Icons** عالية الجودة
+## 📝 CURRENT CONFIGURATION
 
-## قاعدة البيانات Firebase
-```javascript
-// هيكل البيانات في Firestore
-users: {
-  [userId]: {
-    bookmarks: [
-      {
-        id: movieId,
-        title: "Movie Title",
-        poster_path: "/path/to/poster.jpg",
-        media_type: "movie" | "tv",
-        timestamp: FirebaseTimestamp
-      }
-    ]
-  }
+### Package.json Scripts
+```json
+{
+  "dev": "next dev",
+  "build": "next build", 
+  "start": "next start",
+  "lint": "next lint"
 }
 ```
 
-## حالة التطوير الحالية
-- ✅ **جميع الميزات الأساسية** مطبقة ومختبرة
-- ✅ **التصميم المتجاوب** يعمل على جميع الأجهزة
-- ✅ **المصادقة والأمان** مكتملة
-- ✅ **التكامل مع APIs** فعال
-- ✅ **إدارة الحالة** مع React Hooks
-- ✅ **التوجيه الديناميكي** مع Next.js
-
-## النشر والاستضافة (Deployment)
+### Next.js Configuration
 ```javascript
 // next.config.js
 module.exports = {
@@ -217,20 +172,73 @@ module.exports = {
     domains: ["image.tmdb.org"]
   }
 }
-
-// Replit Configuration
-run = "npm run dev"
-build = ["npm", "run", "build"]
-start = ["npm", "run", "start"]
-port = 3000
 ```
 
-## أولويات التطوير المستقبلي
-1. **تحسين الأداء** - تحسين سرعة التحميل
-2. **ميزات إضافية** - قوائم مخصصة، تقييمات
-3. **تحسين UX** - تجربة مستخدم أفضل
-4. **SEO** - تحسين محركات البحث
-5. **PWA** - تطبيق ويب تقدمي
+### Replit Configuration
+- Run command: `npm run dev`
+- Port: 3000
+- Environment: Node.js
+
+## 🎯 DEVELOPMENT STATUS
+- ✅ All core features implemented
+- ✅ Authentication working
+- ✅ TMDB API integration complete
+- ✅ Firebase favorites system active
+- ✅ Responsive design implemented
+- ✅ Search functionality working
+- ✅ Routing and navigation complete
+
+## 🔧 TECHNICAL NOTES
+
+### TypeScript Definitions
+- Custom types in `typings.d.ts`
+- Movie, Person, and API response types defined
+- Proper type safety throughout application
+
+### API Integration
+- TMDB API for all movie/TV data
+- Firebase for user data and favorites
+- NextAuth for authentication
+- Image optimization with Next.js
+
+### State Management
+- React hooks for local state
+- Firebase for persistent data
+- NextAuth for authentication state
+- No external state management library needed
+
+## 🎨 STYLING APPROACH
+- Tailwind CSS utility classes
+- Custom CSS in `globals.css`
+- Netflix brand colors and design patterns
+- Framer Motion for smooth animations
+- Responsive breakpoints for all devices
+
+## 🗄 DATABASE STRUCTURE
+```javascript
+// Firebase Firestore
+users: {
+  [userId]: {
+    bookmarks: [
+      {
+        id: string,
+        title: string,
+        poster_path: string,
+        media_type: "movie" | "tv",
+        timestamp: Date
+      }
+    ]
+  }
+}
+```
 
 ---
-**ملاحظة للـ AI Agent**: هذا المشروع مكتمل وجاهز للتطوير الإضافي. جميع الملفات والمكونات موثقة ومنظمة. يمكنك التعديل والإضافة عليه بثقة كاملة.
+
+**AI AGENT INSTRUCTIONS:**
+- This is YOUR project that you created
+- All files and features are documented above
+- You understand the complete architecture
+- You can modify, enhance, or debug any part
+- Always maintain the Netflix-like design and functionality
+- Use the existing patterns and conventions
+- The project is production-ready and fully functional
