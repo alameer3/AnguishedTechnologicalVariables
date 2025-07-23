@@ -1,0 +1,149 @@
+
+# Netflix Clone - مشروع استنساخ نتفليكس
+
+## وصف المشروع
+مشروع Netflix Clone مبني بـ Next.js و TypeScript يحاكي تطبيق Netflix الأصلي مع جميع الميزات الأساسية.
+
+## التقنيات المستخدمة
+- **Frontend**: Next.js 13, React 18, TypeScript
+- **Styling**: Tailwind CSS, Framer Motion
+- **Authentication**: NextAuth.js v4, Google OAuth
+- **Database**: Firebase Firestore
+- **API**: The Movie Database (TMDB) API
+- **Icons**: React Icons
+- **Video**: React Player
+
+## هيكل المشروع
+
+### الصفحات الرئيسية (pages/)
+- `index.tsx` - الصفحة الرئيسية مع عرض الأفلام
+- `tv.tsx` - صفحة المسلسلات التلفزيونية
+- `about.tsx` - صفحة معلومات المشروع
+- `favourite.tsx` - صفحة المفضلة
+- `people.tsx` - صفحة الممثلين والمشاهير
+- `details/[id].tsx` - صفحة تفاصيل الفيلم/المسلسل
+- `cast/[id].tsx` - صفحة تفاصيل الممثل
+- `season/[id].tsx` - صفحة تفاصيل الموسم
+
+### المكونات الأساسية (components/)
+- `MainPage.tsx` - المكون الرئيسي للصفحة الأولى
+- `Navbar.tsx` - شريط التنقل العلوي
+- `SignIn.tsx` - صفحة تسجيل الدخول
+- `HomeBanner.tsx` - البانر الرئيسي لعرض الأفلام المميزة
+- `Row.tsx` - صفوف عرض الأفلام والمسلسلات
+- `DetailsFeed.tsx` - عرض تفاصيل الأفلام
+- `Trailer.tsx` - عرض التريلرات
+- `BilledCast.tsx` - عرض طاقم التمثيل
+- `Search.tsx` - مكون البحث
+- `AddBookmark.tsx` - إضافة للمفضلة
+
+### مجلدات فرعية للمكونات
+#### components/SeasonPage/
+- `SeasonDetails.tsx` - تفاصيل الموسم
+- `Episodes.tsx` - عرض الحلقات
+- `SeasonFeed.tsx` - تغذية الموسم
+- `SeasonTrailer.tsx` - تريلر الموسم
+
+#### components/person/
+- `PersonBanner.tsx` - بانر الشخص
+- `PersonFeed.tsx` - تغذية الشخص
+- `KnownFor.tsx` - الأعمال المعروفة
+- `PeoplePopular.tsx` - الأشخاص الشائعون
+
+#### components/skeleton/
+- `BannerSkeleton.tsx` - هيكل تحميل البانر
+- `ImageSkelten.tsx` - هيكل تحميل الصور
+- `TrailerSkeleton.tsx` - هيكل تحميل التريلر
+
+### الخدمات والأدوات (utils/)
+- `requests.ts` - طلبات TMDB API للأفلام
+- `personRequest.ts` - طلبات TMDB API للأشخاص
+- `tvSeasonRequest.ts` - طلبات TMDB API للمواسم
+- `baseUrl.tsx` - رابط قاعدة البيانات للصور
+
+### Firebase
+- `firebase/firebase.ts` - إعداد Firebase وقاعدة البيانات
+
+### API Routes
+- `api/auth/[...nextauth].ts` - إعداد NextAuth للمصادقة
+- `api/hello.ts` - API تجريبي
+
+## الميزات الرئيسية
+
+### 1. المصادقة والأمان
+- تسجيل الدخول بـ Google OAuth
+- جلسات آمنة مع NextAuth.js
+- حماية الصفحات الخاصة
+
+### 2. عرض المحتوى
+- عرض الأفلام حسب التصنيفات (شائع، جديد، أكشن، كوميديا، إلخ)
+- عرض المسلسلات التلفزيونية
+- بانر رئيسي متحرك للأفلام المميزة
+- تشغيل التريلرات
+
+### 3. التفاصيل والمعلومات
+- صفحة تفاصيل كاملة لكل فيلم/مسلسل
+- معلومات طاقم التمثيل
+- تقييمات وتواريخ الإنتاج
+- الأنواع والمدة
+
+### 4. البحث والتصفح
+- بحث في الأفلام والمسلسلات
+- تصفح حسب الفئات
+- صفحة المشاهير والممثلين
+
+### 5. المفضلة والإشارات المرجعية
+- إضافة الأفلام للمفضلة
+- حفظ الإشارات المرجعية في Firebase
+- صفحة المفضلة الشخصية
+
+## متغيرات البيئة المطلوبة (.env)
+```
+NEXT_PUBLIC_API_KEY=TMDB_API_KEY
+GOOGLE_CLIENT_ID=google_client_id
+GOOGLE_CLIENT_SECRET=google_client_secret
+NEXT_PUBLIC_SECRET=your_secret_key
+NEXT_PUBLIC_AUTH_URL=http://localhost:3000
+NEXT_PUBLIC_FIREBASE_API_KEY=firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=firebase_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=firebase_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=firebase_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=firebase_messaging_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=firebase_app_id
+```
+
+## أوامر التشغيل
+- `npm install` - تثبيت التبعيات
+- `npm run dev` - تشغيل الخادم المحلي (المنفذ 3000)
+- `npm run build` - بناء المشروع للإنتاج
+- `npm run start` - تشغيل النسخة المبنية
+
+## APIs المستخدمة
+- **TMDB API**: لجلب بيانات الأفلام والمسلسلات والممثلين
+- **Firebase**: لحفظ المفضلة وبيانات المستخدمين
+- **NextAuth**: للمصادقة والجلسات
+
+## الصفحات والروابط
+- `/` - الصفحة الرئيسية
+- `/tv` - المسلسلات
+- `/about` - حول المشروع
+- `/favourite` - المفضلة
+- `/people` - المشاهير
+- `/details/[id]` - تفاصيل الفيلم
+- `/cast/[id]` - تفاصيل الممثل
+- `/season/[id]` - تفاصيل الموسم
+
+## التصميم والواجهة
+- تصميم متجاوب يعمل على جميع الأجهزة
+- ألوان وتدرجات تحاكي Netflix الأصلي
+- حركات سلسة مع Framer Motion
+- تأثيرات hover وتفاعل المستخدم
+- شاشات تحميل (skeleton screens)
+
+## قاعدة البيانات
+- Firebase Firestore لحفظ:
+  - المفضلة للمستخدمين
+  - الإشارات المرجعية
+  - بيانات الجلسات
+
+هذا المشروع عبارة عن استنساخ كامل لـ Netflix مع جميع الميزات الأساسية للتصفح والمشاهدة وإدارة المحتوى.
