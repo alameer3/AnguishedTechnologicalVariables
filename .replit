@@ -1,33 +1,19 @@
-
 run = "npm run dev"
-entrypoint = "pages/index.tsx"
+entrypoint = "index.js"
+hidden = [".config", "package-lock.json", ".next", ".swc"]
+modules = ["nodejs-22"]
 
 [nix]
-channel = "stable-24_05"
+channel = "stable-24_11"
 
 [env]
-PATH = "/nix/store/.../node_modules/.bin:$PATH"
-
-[nix.env]
-NEXT_PUBLIC_BASE_URL = "https://${REPL_SLUG}.${REPL_OWNER}.repl.co"
-
-[packager]
-language = "nodejs"
-
-[packager.features]
-packageSearch = true
-guessImports = true
-enabledForHosting = false
-
-[languages]
-
-[languages.javascript]
-pattern = "**/{*.js,*.jsx,*.ts,*.tsx,*.mjs,*.cjs}"
-
-[languages.javascript.languageServer]
-start = "typescript-language-server --stdio"
+NEXT_TELEMETRY_DISABLED = "1"
 
 [deployment]
-run = ["sh", "-c", "npm run build && npm run start"]
+build = ["npm", "run", "build"]
+run = ["npm", "run", "start"]
 deploymentTarget = "cloudrun"
-ignorePorts = false
+
+[[ports]]
+localPort = 3000
+externalPort = 80
