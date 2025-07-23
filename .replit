@@ -16,3 +16,12 @@ args = "npm run dev"
 
 [nix]
 channel = "stable-24_05"
+
+[nix.env]
+PATH = "/nix/store/.../bin:$PATH"
+
+[[nix.packages]]
+name = "nodejs_20"
+
+[[nix.packages]]
+name = "npm"
